@@ -27,8 +27,10 @@ Toxic/
 ├── submission_actualizado.csv # Archivo de predicciones para subir al concurso
 └── README.md                  # Documentación
 
+```
 ---
-## 2. Requisitos
+
+## 1. Requisitos
 
 Python 3.x
 * Librerías principales:
@@ -58,15 +60,15 @@ Se consideran los Features numéricas específicas de toxicidad, se utiliza un m
 ### 4.1 Lematización y Stemming
 
 En PLN, dos personas pueden escribir la misma idea con formas diferentes de una palabra:
-“insultando”, “insultar”, “insultos”
-“discriminación”, “discriminando”, “discriminó”
-“asquerosa”, “asquerosas”, “asqueroso”
+* “insultando”, “insultar”, “insultos”
+* “discriminación”, “discriminando”, “discriminó”
+* “asquerosa”, “asquerosas”, “asqueroso”
 
 Si dejamos cada forma tal cual, el modelo cree que son palabras diferentes, es decir, aumenta la dispersión del vocabulario y reduce la capacidad del modelo de generalizar, por tal motivo nosotros buscamos la reducción a su forma singular e infinitivo usando la Lematización y El stemming reduce variaciones morfológicas (“discriminado” → “discrimin”).
 
 Esto mejora la representación del texto, permite agrupar significados y aumenta la capacidad del modelo de detectar patrones de odio incluso si el usuario escribe variaciones creativas.
 
-### 4.2 N-gramas + TF-IDF → Representación del lenguaje
+### 4.2 N-gramas + TF-IDF
 
 Los modelos clásicos no “entienden” lenguaje: necesitan convertir texto en números mediante features. Por eso aplicamos:
 
@@ -109,6 +111,10 @@ El SVM lineal depende mucho del parámetro C: C pequeño → modelo conservador,
 2. Y para cada C se mide: F1 macro por fold y F1 macro promedio
 3. Luego se elige el C ganador, el que maximiza el F1 macro: best_C = max(resultados_C, key=lambda x: x[2])
 
+<img width="1326" height="1430" alt="image" src="https://github.com/user-attachments/assets/167905b3-e7c6-4646-890f-b16b2bb05620" />
+<img width="1466" height="1202" alt="image" src="https://github.com/user-attachments/assets/42e481e4-bc46-46d3-80f1-c033098c6753" />
+
+
 ### Conclusión
 
 * Lematización + stemming: reduce la variabilidad de palabras para que el modelo generalice mejor.
@@ -116,3 +122,5 @@ El SVM lineal depende mucho del parámetro C: C pequeño → modelo conservador,
 * Features numéricas: capturan estilo agresivo, gritos, repeticiones, insultos explícitos → señales muy útiles.
 * LinearSVC: mejor modelo clásico para texto en alta dimensión, robusto y eficiente.
 * Tuning + validación cruzada: optimiza el hiperparámetro C para maximizar F1 macro y competir mejor.
+
+
