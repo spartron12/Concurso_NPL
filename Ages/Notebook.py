@@ -1,29 +1,13 @@
-# -*- coding: utf-8 -*-
-"""
-AGE RANGE CLASSIFIER (Tweets) — STACKING + AGE-AFFINITY FEATURES
-Objetivo: superar ~57% accuracy con modelo clásico (TF-IDF + stacking).
-
-Uso:
-  python age_classifier_boosted.py \
-      --train age_train.csv \
-      --test age_test.csv \
-      --sep ';' \
-      --kbest 60000 \
-      --folds 5 \
-      --outfile submission_stack.csv
-"""
-
 import argparse
 import os
 import re
 import sys
 import warnings
 from pathlib import Path
-
 import numpy as np
 import pandas as pd
-from scipy.sparse import hstack, csr_matrix
 
+from scipy.sparse import hstack, csr_matrix
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_selection import SelectKBest, chi2
@@ -56,7 +40,7 @@ def read_csv(path_like, sep=";"):
 
 
 # ============================================================================
-# Limpieza y normalización básica de texto (multi-idioma ES/EN)
+# Limpieza y normalización
 # ============================================================================
 URL_RE = re.compile(r"https?://\S+")
 MENT_RE = re.compile(r"@\w+")
@@ -188,7 +172,7 @@ def count_token_hits(text: str, vocab: list) -> int:
 def extra_features(series: pd.Series) -> csr_matrix:
     """
     Construye features numéricas + afinidades de edad a partir del texto bruto.
-    Todas las columnas son >= 0 (apto para chi2 y NB).
+    Todas las columnas son >= 0
     """
     txt = series.fillna("").astype(str)
     low = txt.str.lower()
@@ -256,7 +240,7 @@ def build_vectorizers(fast: bool):
 
 
 # ============================================================================
-# Modelos base (stacking)
+# Modelos base
 # ============================================================================
 def make_calibrated_lsvc(C: float = 2.5):
     svc = LinearSVC(C=C, class_weight="balanced", random_state=42)
@@ -298,7 +282,7 @@ def build_base_models():
 
 
 # ============================================================================
-# Stacking OOF
+# Stacking
 # ============================================================================
 def stacking_oof(X, y, n_splits=5, random_state=42):
     skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=random_state)
@@ -354,7 +338,7 @@ def stacking_oof(X, y, n_splits=5, random_state=42):
 
     print("\n[OOF] Mean ± std: {:.4f} ± {:.4f}".format(np.mean(accs), np.std(accs)))
 
-    # Re-entrenar modelos base en TODO el train
+    # Re-entrenar modelos base en todo el train
     fitted = []
     for (name, model) in build_base_models():
         print(f"Re-entrenando modelo base completo: {name} ...")
@@ -426,7 +410,7 @@ def main():
     print("=" * 80 + "\n")
 
     # -------------------
-    # Cargar TRAIN
+    # Cargar training
     # -------------------
     train = read_csv(args.train, sep=args.sep)
     if not {"text", "age_range"}.issubset(train.columns):
@@ -463,7 +447,7 @@ def main():
     X_text = hstack([Xw, Xc]).tocsr()
 
     # -------------------
-    # Selección de características (solo sobre texto TF-IDF)
+    # Selección de características
     # -------------------
     selector = None
     if args.kbest and args.kbest > 0 and args.kbest < X_text.shape[1]:
@@ -478,14 +462,14 @@ def main():
     print(f"[INFO] Shape final de X (TRAIN): {X.shape}")
 
     # -------------------
-    # Stacking con OOF
+    # Stacking
     # -------------------
     base_models, meta, oof_meta, accs = stacking_oof(X, y, n_splits=args.folds, random_state=42)
     cv_mean = float(np.mean(accs))
     print(f"\n[OOF] CV mean accuracy: {cv_mean:.4f} -> {cv_mean * 100:.2f}%")
 
     # -------------------
-    # INFERENCIA EN TEST
+    # Inferencia de Test
     # -------------------
     print("\n=== INFERENCIA EN TEST ===")
     test = read_csv(args.test, sep=args.sep)
