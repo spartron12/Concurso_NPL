@@ -92,7 +92,8 @@ El stacking de modelos clásicos (SVC, Naive Bayes, Logistic Regression y SGD) p
 
 El lenguaje humano es altamente complejo y ruidoso en redes sociales, especialmente en Twitter, donde aparecen abreviaciones, emojis, códigos culturales, mezcla de idiomas y jergas propias de comunidades. El modelo logró capturar parte de esa variabilidad, pero la presencia de ruido semántico todavía afecta su capacidad de generalización, lo cual se refleja en un accuracy del 45.43%.
 
-El accuracy de 0.45432 refleja las limitaciones propias y frente a problemas altamente semánticos y sociolingüísticos, como la inferencia de edad. Predecir características demográficas a partir de un solo tweet es una tarea difícil: muchos usuarios no revelan información directa sobre su edad y su estilo lingüístico puede no corresponder al estereotipo del grupo.
+Nosotros determinamos que la tarea a ejecutar es compleja porque la edad está solo indirectamente presente en el lenguaje, y el enfoque clásico basado en TF-IDF muestra limitaciones inherentes al no capturar el contexto semántico profundo.
+Aun así, el pipeline construido y la metodológia que usamos constituye una base confiable para futuras técnicas modernas de NLP contextual y modelos preentrenados.
 
 
 
