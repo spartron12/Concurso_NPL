@@ -44,16 +44,15 @@ Expansión de contracciones que permite que los modelos capturen el significado 
 
 Se construyen features numéricas y de afinidad de edad:
 
-- Básicas de forma: número de palabras, caracteres, signos de exclamación, preguntas, hashtags, menciones, URLs, dígitos, elongaciones y proporción de mayúsculas.
-
-- Afinidad temática: presencia de tokens relacionados con:
-- Jóvenes (young_score)
-- Adultos (adult_score)
-- Política (politics_score)
-- Farándula / celebridades (celeb_score)
-- Gaming (gaming_score)
-- Trabajo (work_score)
-- Finanzas (finance_score)
+* Básicas de forma: número de palabras, caracteres, signos de exclamación, preguntas, hashtags, menciones, URLs, dígitos, elongaciones y proporción de mayúsculas.
+* Afinidad temática: presencia de tokens relacionados con:
+* Jóvenes (young_score)
+* Adultos (adult_score)
+* Política (politics_score)
+* Farándula / celebridades (celeb_score)
+* Gaming (gaming_score)
+* Trabajo (work_score)
+* Finanzas (finance_score)
 
 ## Vectorización de texto
 
