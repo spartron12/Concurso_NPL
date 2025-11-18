@@ -90,7 +90,7 @@ El stacking de modelos clásicos (SVC, Naive Bayes, Logistic Regression y SGD) p
 
 ## Conclusión
 
-El modelo desarrollado logró un accuracy de 0.45432, lo cual evidencia que basado en normalización, extracción de características lingüísticas y sociolingüísticas, y un ensamble de modelos lineales se consiguió capturar parte del estilo comunicativo y los patrones temáticos asociados a diferentes rangos de edad, aún existen limitaciones importantes derivadas de la complejidad del lenguaje en redes sociales. La variación extrema en la forma de escribir, la mezcla de idiomas, la presencia de jerga y la falta de indicadores explícitos de edad dificultan la tarea, y los métodos basados en TF-IDF no alcanzan a modelar el significado profundo ni las relaciones contextuales entre palabras.
+El modelo desarrollado logró un accuracy de 0.45 lo cual evidencia que basado en normalización, extracción de características lingüísticas y sociolingüísticas, y un ensamble de modelos lineales se consiguió capturar parte del estilo comunicativo y los patrones temáticos asociados a diferentes rangos de edad, aún existen limitaciones importantes derivadas de la complejidad del lenguaje en redes sociales. La variación extrema en la forma de escribir, la mezcla de idiomas, la presencia de jerga y la falta de indicadores explícitos de edad dificultan la tarea, y los métodos basados en TF-IDF no alcanzan a modelar el significado profundo ni las relaciones contextuales entre palabras.
 
 
 
