@@ -8,13 +8,9 @@ Este proyecto implementa un clasificador de rangos de edad a partir de tweets, u
 Ages/
 │
 ├── Notebook.py
-├── age_classifier_boosted.py
-│
 ├── Age_train.csv
 ├── Age_test.csv
-│
-└── Submission/
-      └── submission_stack.csv (resultado final)
+├── submission.csv
 
 ```
 
