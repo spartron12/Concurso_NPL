@@ -85,7 +85,7 @@ El stacking de modelos clásicos (SVC, Naive Bayes, Logistic Regression y SGD) p
 - Se entrena un meta-modelo (LogisticRegression) sobre las probabilidades OOF.
 - Finalmente, se genera la predicción combinada.
 
-<img width="1330" height="1206" alt="image" src="https://github.com/user-attachments/assets/9245f2c1-b9c6-46b1-8499-2bbd4b484439" />
+<img width="1420" height="1256" alt="image" src="https://github.com/user-attachments/assets/831a5378-8bc5-4890-a381-f43347529c83" />
 
 
 ## Conclusión
