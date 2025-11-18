@@ -78,10 +78,22 @@ Luego combinamos sus predicciones con un meta-modelo que aprende, qué modelo es
 
 ## Stacking
 
+El stacking de modelos clásicos (SVC, Naive Bayes, Logistic Regression y SGD) permite combinar perspectivas diferentes del texto, pero cada uno está limitado por depender exclusivamente de representaciones basadas en frecuencias. Si bien esta estrategia aumentó la robustez del modelo.
+
 - Se realiza cross-validation OOF con StratifiedKFold.
 - Se obtienen probabilidades de los modelos base.
 - Se entrena un meta-modelo (LogisticRegression) sobre las probabilidades OOF.
 - Finalmente, se genera la predicción combinada.
 
+<img width="1330" height="1206" alt="image" src="https://github.com/user-attachments/assets/9245f2c1-b9c6-46b1-8499-2bbd4b484439" />
+
 
 ## Conclusión
+
+El lenguaje humano es altamente complejo y ruidoso en redes sociales, especialmente en Twitter, donde aparecen abreviaciones, emojis, códigos culturales, mezcla de idiomas y jergas propias de comunidades. El modelo logró capturar parte de esa variabilidad, pero la presencia de ruido semántico todavía afecta su capacidad de generalización, lo cual se refleja en un accuracy del 45.43%.
+
+El accuracy de 0.45432 refleja las limitaciones propias y frente a problemas altamente semánticos y sociolingüísticos, como la inferencia de edad. Predecir características demográficas a partir de un solo tweet es una tarea difícil: muchos usuarios no revelan información directa sobre su edad y su estilo lingüístico puede no corresponder al estereotipo del grupo.
+
+
+
+
