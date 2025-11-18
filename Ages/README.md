@@ -2,6 +2,7 @@
 
 Este proyecto implementa un clasificador de rangos de edad a partir de tweets, utilizando técnicas de procesamiento de lenguaje natural clásico y un esquema de stacking de modelos. Se combinan features de texto (TF-IDF) y features adicionales de afinidad de edad basadas en vocabularios temáticos.
 
+
 ## Estructura de la carpeta
 
 ```text
@@ -14,9 +15,19 @@ Ages/
 
 ```
 
-## Limpieza y normalización
+## Normalización y Limpieza
 
-El texto se procesa mediante:
+El texto que escriben las personas en redes sociales es altamente variado: puede ser español, inglés, spanglish o jerga. Incluye emojis, abreviaciones, errores ortográficos, hashtags, elongaciones (“holaaaaa”), sarcasmo, etc. además se mezclan temas muy diferentes según la edad (trabajo, estudios, farándula, política, gaming).
+
+El primer paso del proyecto es identificar esa diversidad lingüística y preparar el texto para ser procesado. En ese sentido el preprocesamiento es limpiar el ruido del texto sin destruir información importante, especialmente porque señales como:
+
+* abreviaciones,
+* elongaciones,
+* emojis,
+* uso de jerga,
+* temas recurrentes
+
+Posteriormente el texto se procesa mediante:
 
 - Reemplazo de URLs, menciones y hashtags.
 
