@@ -128,3 +128,8 @@ La metodología contribuyó a encontrar un balance adecuado entre generalizació
 * Tuning + validación cruzada: optimiza el hiperparámetro C para maximizar F1 macro y competir mejor.
 
 El accuracy logrado demuestra que el modelo identifica de manera efectiva las tres dimensiones del discurso tóxico (HS, TR y AG) y que las decisiones en la ingeniería de características y el ajuste de parámetros fueron apropiadas.
+
+### Resultado Kaggle
+
+<img width="734" height="336" alt="image" src="https://github.com/user-attachments/assets/6ecad104-083c-415d-b961-04c633fe2616" />
+
