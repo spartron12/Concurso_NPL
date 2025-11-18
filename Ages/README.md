@@ -2,6 +2,20 @@
 
 Este proyecto implementa un clasificador de rangos de edad a partir de tweets, utilizando técnicas de procesamiento de lenguaje natural clásico y un esquema de stacking de modelos. Se combinan features de texto (TF-IDF) y features adicionales de afinidad de edad basadas en vocabularios temáticos.
 
+## Estructura de la carpeta
+
+Ages/
+│
+├── Notebook.py
+├── age_classifier_boosted.py
+│
+├── Age_train.csv
+├── Age_test.csv
+│
+└── Submission/
+      └── submission_stack.csv (resultado final)
+
+
 ## Limpieza y normalización
 
 El texto se procesa mediante:
