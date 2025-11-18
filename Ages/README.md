@@ -30,14 +30,15 @@ El primer paso del proyecto es identificar esa diversidad lingüística y prepar
 Posteriormente el texto se procesa mediante:
 
 - Reemplazo de URLs, menciones y hashtags.
-
 - Expansión de contracciones en inglés y español.
-
 - Reemplazo de emojis y emoticones por tokens genéricos.
-
-- Detección de elongaciones de letras (cooool → coo elong).
-
+- Detección de elongaciones de letras (cooool)
 - Conservación solo de letras, números y espacios.
+
+Expansión de contracciones que permite que los modelos capturen el significado verdadero de expresiones cortas o informales.
+
+* En ambos idiomas (ES/EN):"can’t” → “cannot”, “i'm” → “i am”, “xq” → “porque”, “k” → “que”, “tkm” → “te quiero mucho”
+
 
 ##  Features adicionales
 
@@ -46,49 +47,42 @@ Se construyen features numéricas y de afinidad de edad:
 - Básicas de forma: número de palabras, caracteres, signos de exclamación, preguntas, hashtags, menciones, URLs, dígitos, elongaciones y proporción de mayúsculas.
 
 - Afinidad temática: presencia de tokens relacionados con:
-
 - Jóvenes (young_score)
-
 - Adultos (adult_score)
-
 - Política (politics_score)
-
 - Farándula / celebridades (celeb_score)
-
 - Gaming (gaming_score)
-
 - Trabajo (work_score)
-
 - Finanzas (finance_score)
 
 ## Vectorización de texto
 
-Se usan TF-IDF para:
+Se usan TF-IDF para convertir el lenguaje en números midiendo qué tan frecuente es una palabra dentro del tweet, pero qué tan rara es en el conjunto completo ayudando a identificar palabras distintivas de cada grupo de edad y patrones específicos de escritura
 
-- Palabras (ngram 1-2)
+* Palabras (ngram 1-2)
+* Caracteres (ngram 3-5)
 
-- Caracteres (ngram 3-5)
-
-Opcionalmente, se puede limitar la cantidad de features para mayor velocidad (--fast true).
 
 ## Modelos base
 
-Se entrenan cuatro modelos fuertes:
+Usamos 4 modelos complementarios: LinearSVC, Logistic Regression, SGDClassifier y Naive Bayes
 
-- LinearSVC calibrado (CalibratedClassifierCV)
+Cada uno captura aspectos diferentes del lenguaje:
 
-- SGDClassifier (modified_huber)
+* SVC: Bordes de decisión basados en textos largos + temas
+* NB: escritura corta y ruidosa
+* LR: señales suaves y probabilísticas
+* SGD: variantes de texto muy disperso
 
-- LogisticRegression
+Luego combinamos sus predicciones con un meta-modelo que aprende, qué modelo es mejor para cada clase y cómo ponderar sus salidas. Con esto nosotros creemos que aumentara la estabilidad y precisión.
 
-- ComplementNB
 
 ## Stacking
 
 - Se realiza cross-validation OOF con StratifiedKFold.
-
 - Se obtienen probabilidades de los modelos base.
-
 - Se entrena un meta-modelo (LogisticRegression) sobre las probabilidades OOF.
-
 - Finalmente, se genera la predicción combinada.
+
+
+## Conclusión
