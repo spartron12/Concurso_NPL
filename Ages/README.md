@@ -86,11 +86,14 @@ El stacking de modelos clásicos (SVC, Naive Bayes, Logistic Regression y SGD) p
 - Finalmente, se genera la predicción combinada.
 
 <img width="1420" height="1256" alt="image" src="https://github.com/user-attachments/assets/831a5378-8bc5-4890-a381-f43347529c83" />
+<img width="1442" height="212" alt="image" src="https://github.com/user-attachments/assets/7be49672-6418-4d4b-a740-ad4bc7e9c50a" />
+<img width="1376" height="94" alt="image" src="https://github.com/user-attachments/assets/994a8845-9dd2-4ecd-8318-7f42067e38da" />
+
 
 
 ## Conclusión
 
-El modelo desarrollado logró un accuracy de 0.45 lo cual evidencia que basado en normalización, extracción de características lingüísticas y sociolingüísticas, y un ensamble de modelos lineales se consiguió capturar parte del estilo comunicativo y los patrones temáticos asociados a diferentes rangos de edad, aún existen limitaciones importantes derivadas de la complejidad del lenguaje en redes sociales. La variación extrema en la forma de escribir, la mezcla de idiomas, la presencia de jerga y la falta de indicadores explícitos de edad dificultan la tarea, y los métodos basados en TF-IDF no alcanzan a modelar el significado profundo ni las relaciones contextuales entre palabras.
+El modelo desarrollado logró un accuracy de 0.45432 lo cual evidencia que basado en normalización, extracción de características lingüísticas y sociolingüísticas, y un ensamble de modelos lineales se consiguió capturar parte del estilo comunicativo y los patrones temáticos asociados a diferentes rangos de edad, aún existen limitaciones importantes derivadas de la complejidad del lenguaje en redes sociales. La variación extrema en la forma de escribir, la mezcla de idiomas, la presencia de jerga y la falta de indicadores explícitos de edad dificultan la tarea, y los métodos basados en TF-IDF no alcanzan a modelar el significado profundo ni las relaciones contextuales entre palabras.
 
 
 
