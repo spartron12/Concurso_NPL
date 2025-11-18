@@ -4,6 +4,7 @@ Este proyecto implementa un clasificador de rangos de edad a partir de tweets, u
 
 ## Estructura de la carpeta
 
+```text
 Ages/
 │
 ├── Notebook.py
@@ -15,6 +16,7 @@ Ages/
 └── Submission/
       └── submission_stack.csv (resultado final)
 
+```
 
 ## Limpieza y normalización
 
