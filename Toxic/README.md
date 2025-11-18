@@ -117,10 +117,14 @@ El SVM lineal depende mucho del parámetro C: C pequeño → modelo conservador,
 
 ### Conclusión
 
+El modelo desarrollado alcanzó un accuracy de 0.75426, lo cual representa un desempeño sólido dentro del contexto de clasificación de discursos de odio en tweets, especialmente considerando que se trabajó con técnicas clásicas de Procesamiento de Lenguaje Natural, sin recurrir a arquitecturas profundas como transformers.
+
+La metodología contribuyó a encontrar un balance adecuado entre generalización y sensibilidad a expresiones ofensivas:
+
 * Lematización + stemming: reduce la variabilidad de palabras para que el modelo generalice mejor.
 * TF-IDF + n-gramas: permite representar el texto con expresiones de agresión, insultos compuestos y variaciones ortográficas.
 * Features numéricas: capturan estilo agresivo, gritos, repeticiones, insultos explícitos → señales muy útiles.
 * LinearSVC: mejor modelo clásico para texto en alta dimensión, robusto y eficiente.
 * Tuning + validación cruzada: optimiza el hiperparámetro C para maximizar F1 macro y competir mejor.
 
-
+El accuracy logrado demuestra que el modelo identifica de manera efectiva las tres dimensiones del discurso tóxico (HS, TR y AG) y que las decisiones en la ingeniería de características y el ajuste de parámetros fueron apropiadas.
